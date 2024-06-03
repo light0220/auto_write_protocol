@@ -1,4 +1,5 @@
 __pycache__/
 data/*
+!data/示例.docx
 output/*
 *config.*
