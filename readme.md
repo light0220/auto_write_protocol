@@ -6,13 +6,14 @@
 
 作者：北极星光	E-mail：light22@126.com
 
-github项目地址：[light0220/auto_write_protocol (github.com)](https://github.com/light0220/auto_write_protocol)
+github项目地址：[https://github.com/light0220/auto_write_protocol](https://github.com/light0220/auto_write_protocol)
 
-gitee项目地址：[auto_write_protocol: 自动书写工程协议 (gitee.com)](https://gitee.com/light22/auto_write_protocol)
-
+gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gitee.com/light22/auto_write_protocol)
 
 ## 使用方法
 
++ 安装python3环境: [https://www.python.org/downloads/](https://www.python.org/downloads/)
++ 安装本项目依赖的第三方库：`pip install -r requirements.txt`
 + 克隆项目到本地：
   + github：`git clone https://github.com/light0220/auto_write_protocol.git`
   + gitee：`git clone https://gitee.com/light22/auto_write_protocol.git`
