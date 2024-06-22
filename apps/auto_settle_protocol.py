@@ -3,7 +3,7 @@
 '''
 作    者 : 北极星光 light22@126.com
 创建时间 : 2024-06-02 00:21:43
-最后修改 : 2024-06-13 11:47:32
+最后修改 : 2024-06-22 23:17:25
 修 改 者 : 北极星光
 '''
 
@@ -11,7 +11,7 @@ import os
 import datetime
 from docx import Document
 from openpyxl import load_workbook
-from .tools import *
+from tools import *
 
 
 def auto_settle_protocol():
