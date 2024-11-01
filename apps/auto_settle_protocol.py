@@ -3,7 +3,7 @@
 '''
 作    者 : 北极星光 light22@126.com
 创建时间 : 2024-06-02 00:21:43
-最后修改 : 2024-06-22 23:17:25
+最后修改 : 2024-11-01 17:22:01
 修 改 者 : 北极星光
 '''
 
@@ -16,28 +16,22 @@ from tools import *
 
 def auto_settle_protocol():
     # 读取config.xlsx文件
-    workbook = load_workbook('config.xlsx')
-    sheet = workbook.active
+    workbook = load_workbook('config.xlsx', data_only=True)
+    sheet = workbook['结算协议']
 
     # 遍历sheet
     for i in range(2, sheet.max_row + 1):
         protocol_name = sheet[f'A{i}'].value  # 框架协议名称 <protocol_name>
         contract_number = sheet[f'B{i}'].value  # 框架协议编号 <contract_number>
-        contract_sign_date = datetime.datetime.strptime(
-            sheet[f'C{i}'].value, '%Y-%m').strftime('%Y年%m月')  # 框架协议签订年月 <contract_sign_date>
+        contract_sign_date = excel_date_format(sheet[f'C{i}'].value).strftime('%Y年%m月')  # 框架协议签订年月 <contract_sign_date>
         project_name = sheet[f'D{i}'].value  # 工程名称 <project_name>
         project_address = sheet[f'E{i}'].value  # 工程地址 <project_address>
         party_a_name = sheet[f'F{i}'].value  # 甲方名称 <party_a_name>
         party_b_name = sheet[f'G{i}'].value  # 乙方名称 <party_b_name>
-        start_date = datetime.datetime.strptime(sheet[f'H{i}'].value,
-                                                '%Y-%m-%d').strftime(
-                                                    '%Y年%m月%d日')  # 开工日期
-        completion_date = datetime.datetime.strptime(sheet[f'I{i}'].value,
-                                                     '%Y-%m-%d').strftime(
-                                                         '%Y年%m月%d日')  # 竣工日期 <completion_date>
+        start_date = excel_date_format(sheet[f'H{i}'].value).strftime('%Y年%m月%d日')  # 开工日期
+        completion_date = excel_date_format(sheet[f'I{i}'].value).strftime('%Y年%m月%d日')  # 竣工日期 <completion_date>
         warranty_period = sheet[f'J{i}'].value  # 质保期
-        settlement_sign_date = datetime.datetime.strptime(
-            sheet[f'K{i}'].value, '%Y-%m').strftime('%Y年%m月')  # 结算协议签订年月 <settlement_sign_date>
+        settlement_sign_date = excel_date_format(sheet[f'K{i}'].value).strftime('%Y年%m月')  # 结算协议签订年月 <settlement_sign_date>
         settlement_amount = round(sheet[f'L{i}'].value, 2)  # 结算金额 <settlement_amount>
         settlement_amount_capital = num_to_capital(settlement_amount)  # 结算金额大写 <settlement_amount_capital>
         tax_rate = sheet[f'M{i}'].value  # 税率
@@ -68,10 +62,11 @@ def auto_settle_protocol():
         warranty_amount_capital = num_to_capital(warranty_amount)  # 质保金金额大写 <warranty_amount_capital>
 
         # 创建工程文件夹
-        os.makedirs(f'output/{project_name}工程', exist_ok=True)
+        path = f'output/{project_name}工程结算协议'
+        os.makedirs(path, exist_ok=True)
 
         # 生成结算协议
-        document = Document('data/结算协议-模板.docx')
+        document = Document('data/结算协议模板/结算协议-模板.docx')
         # 替换模板中的变量
         replace_variables(
             document,
@@ -108,11 +103,11 @@ def auto_settle_protocol():
             warranty_amount_capital=warranty_amount_capital)
 
         # 保存文件
-        document.save(f'output/{project_name}工程/{project_name}工程结算协议.docx')
+        document.save(f'{path}/{project_name}工程结算协议.docx')
         print(f'生成{project_name}工程结算协议成功！')
 
         # 生成质量保修书
-        document = Document('data/质量保修书-模板.docx')
+        document = Document('data/结算协议模板/质量保修书-模板.docx')
 
         # 替换模板中的变量
         replace_variables(document,
@@ -128,5 +123,5 @@ def auto_settle_protocol():
                           warranty_amount_capital=warranty_amount_capital)
 
         # 保存文件
-        document.save(f'output/{project_name}工程/{project_name}工程质量保修书.docx')
+        document.save(f'{path}/{project_name}工程质量保修书.docx')
         print(f'生成{project_name}工程质量保修书成功！')
