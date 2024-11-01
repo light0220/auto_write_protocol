@@ -3,9 +3,23 @@
 '''
 作    者 : 北极星光 light22@126.com
 创建时间 : 2024-06-02 18:52:17
-最后修改 : 2024-06-04 11:28:25
+最后修改 : 2024-11-01 16:30:09
 修 改 者 : 北极星光
 '''
+
+
+# Excel日期格式化
+def excel_date_format(excel_value):
+    """
+    Excel日期格式化
+    :param excel_value: Excel日期值
+    :return: datetime对象
+    """
+    if excel_value:
+        date_obj = datetime(1899, 12, 30) + timedelta(days=excel_value)
+        return date_obj
+    else:
+        return
 
 
 # 小写金额转大写
@@ -101,104 +115,140 @@ def replace_variables(document,
         for run in paragraph.runs:
             if '<protocol_name>' in run.text:
                 if protocol_name is not None:
-                    run.text = run.text.replace('<protocol_name>', str(protocol_name))
+                    run.text = run.text.replace('<protocol_name>',
+                                                str(protocol_name))
             if '<contract_number>' in run.text:
                 if contract_number is not None:
-                    run.text = run.text.replace('<contract_number>', str(contract_number))
+                    run.text = run.text.replace('<contract_number>',
+                                                str(contract_number))
             if '<contract_sign_date>' in run.text:
                 if contract_sign_date is not None:
-                    run.text = run.text.replace('<contract_sign_date>', str(contract_sign_date))
+                    run.text = run.text.replace('<contract_sign_date>',
+                                                str(contract_sign_date))
             if '<project_name>' in run.text:
                 if project_name is not None:
-                    run.text = run.text.replace('<project_name>', str(project_name))
+                    run.text = run.text.replace('<project_name>',
+                                                str(project_name))
             if '<project_address>' in run.text:
                 if project_address is not None:
-                    run.text = run.text.replace('<project_address>', str(project_address))
+                    run.text = run.text.replace('<project_address>',
+                                                str(project_address))
             if '<party_a_name>' in run.text:
                 if party_a_name is not None:
-                    run.text = run.text.replace('<party_a_name>', str(party_a_name))
+                    run.text = run.text.replace('<party_a_name>',
+                                                str(party_a_name))
             if '<party_b_name>' in run.text:
                 if party_b_name is not None:
-                    run.text = run.text.replace('<party_b_name>', str(party_b_name))
+                    run.text = run.text.replace('<party_b_name>',
+                                                str(party_b_name))
             if '<start_date>' in run.text:
                 if start_date is not None:
-                    run.text = run.text.replace('<start_date>', str(start_date))
+                    run.text = run.text.replace('<start_date>',
+                                                str(start_date))
             if '<completion_date>' in run.text:
                 if completion_date is not None:
-                    run.text = run.text.replace('<completion_date>', str(completion_date))
+                    run.text = run.text.replace('<completion_date>',
+                                                str(completion_date))
             if '<warranty_period>' in run.text:
                 if warranty_period is not None:
-                    run.text = run.text.replace('<warranty_period>', str(warranty_period))
+                    run.text = run.text.replace('<warranty_period>',
+                                                str(warranty_period))
             if '<settlement_sign_date>' in run.text:
                 if settlement_sign_date is not None:
-                    run.text = run.text.replace('<settlement_sign_date>', str(settlement_sign_date))
+                    run.text = run.text.replace('<settlement_sign_date>',
+                                                str(settlement_sign_date))
             if '<settlement_amount>' in run.text:
                 if settlement_amount is not None:
-                    run.text = run.text.replace('<settlement_amount>', str(settlement_amount))
+                    run.text = run.text.replace('<settlement_amount>',
+                                                str(settlement_amount))
             if '<settlement_amount_capital>' in run.text:
                 if settlement_amount_capital is not None:
-                    run.text = run.text.replace('<settlement_amount_capital>', str(settlement_amount_capital))
+                    run.text = run.text.replace('<settlement_amount_capital>',
+                                                str(settlement_amount_capital))
             if '<tax_rate>' in run.text:
                 if tax_rate is not None:
                     run.text = run.text.replace('<tax_rate>', str(tax_rate))
             if '<tax_rate_percent>' in run.text:
                 if tax_rate_percent is not None:
-                    run.text = run.text.replace('<tax_rate_percent>', str(tax_rate_percent))
+                    run.text = run.text.replace('<tax_rate_percent>',
+                                                str(tax_rate_percent))
             if '<settlement_amount_untax>' in run.text:
                 if settlement_amount_untax is not None:
-                    run.text = run.text.replace('<settlement_amount_untax>', str(settlement_amount_untax))
+                    run.text = run.text.replace('<settlement_amount_untax>',
+                                                str(settlement_amount_untax))
             if '<settlement_amount_tax>' in run.text:
                 if settlement_amount_tax is not None:
-                    run.text = run.text.replace('<settlement_amount_tax>', str(settlement_amount_tax))
+                    run.text = run.text.replace('<settlement_amount_tax>',
+                                                str(settlement_amount_tax))
             if '<paid_amount>' in run.text:
                 if paid_amount is not None:
-                    run.text = run.text.replace('<paid_amount>', str(paid_amount))
+                    run.text = run.text.replace('<paid_amount>',
+                                                str(paid_amount))
             if '<paid_amount_capital>' in run.text:
                 if paid_amount_capital is not None:
-                    run.text = run.text.replace('<paid_amount_capital>', str(paid_amount_capital))
+                    run.text = run.text.replace('<paid_amount_capital>',
+                                                str(paid_amount_capital))
             if '<balance_amount>' in run.text:
                 if balance_amount is not None:
-                    run.text = run.text.replace('<balance_amount>', str(balance_amount))
+                    run.text = run.text.replace('<balance_amount>',
+                                                str(balance_amount))
             if '<balance_amount_capital>' in run.text:
                 if balance_amount_capital is not None:
-                    run.text = run.text.replace('<balance_amount_capital>', str(balance_amount_capital))
+                    run.text = run.text.replace('<balance_amount_capital>',
+                                                str(balance_amount_capital))
             if '<settlement_amount_untax_balance>' in run.text:
                 if settlement_amount_untax_balance is not None:
-                    run.text = run.text.replace('<settlement_amount_untax_balance>', str(settlement_amount_untax_balance))
+                    run.text = run.text.replace(
+                        '<settlement_amount_untax_balance>',
+                        str(settlement_amount_untax_balance))
             if '<settlement_amount_tax_balance>' in run.text:
                 if settlement_amount_tax_balance is not None:
-                    run.text = run.text.replace('<settlement_amount_tax_balance>', str(settlement_amount_tax_balance))
+                    run.text = run.text.replace(
+                        '<settlement_amount_tax_balance>',
+                        str(settlement_amount_tax_balance))
             if '<payment_ratio>' in run.text:
                 if payment_ratio is not None:
-                    run.text = run.text.replace('<payment_ratio>', str(payment_ratio))
+                    run.text = run.text.replace('<payment_ratio>',
+                                                str(payment_ratio))
             if '<payment_ratio_percent>' in run.text:
                 if payment_ratio_percent is not None:
-                    run.text = run.text.replace('<payment_ratio_percent>', str(payment_ratio_percent))
+                    run.text = run.text.replace('<payment_ratio_percent>',
+                                                str(payment_ratio_percent))
             if '<payment_amount>' in run.text:
                 if payment_amount is not None:
-                    run.text = run.text.replace('<payment_amount>', str(payment_amount))
+                    run.text = run.text.replace('<payment_amount>',
+                                                str(payment_amount))
             if '<payment_amount_capital>' in run.text:
                 if payment_amount_capital is not None:
-                    run.text = run.text.replace('<payment_amount_capital>', str(payment_amount_capital))
+                    run.text = run.text.replace('<payment_amount_capital>',
+                                                str(payment_amount_capital))
             if '<payment_amount_this>' in run.text:
                 if payment_amount_this is not None:
-                    run.text = run.text.replace('<payment_amount_this>', str(payment_amount_this))
+                    run.text = run.text.replace('<payment_amount_this>',
+                                                str(payment_amount_this))
             if '<payment_amount_this_capital>' in run.text:
                 if payment_amount_this_capital is not None:
-                    run.text = run.text.replace('<payment_amount_this_capital>', str(payment_amount_this_capital))
+                    run.text = run.text.replace(
+                        '<payment_amount_this_capital>',
+                        str(payment_amount_this_capital))
             if '<warranty_ratio>' in run.text:
                 if warranty_ratio is not None:
-                    run.text = run.text.replace('<warranty_ratio>', str(warranty_ratio))
+                    run.text = run.text.replace('<warranty_ratio>',
+                                                str(warranty_ratio))
             if '<warranty_ratio_percent>' in run.text:
                 if warranty_ratio_percent is not None:
-                    run.text = run.text.replace('<warranty_ratio_percent>', str(warranty_ratio_percent))
+                    run.text = run.text.replace('<warranty_ratio_percent>',
+                                                str(warranty_ratio_percent))
             if '<warranty_amount>' in run.text:
                 if warranty_amount is not None:
-                    run.text = run.text.replace('<warranty_amount>', str(warranty_amount))
+                    run.text = run.text.replace('<warranty_amount>',
+                                                str(warranty_amount))
             if '<warranty_amount_capital>' in run.text:
                 if warranty_amount_capital is not None:
-                    run.text = run.text.replace('<warranty_amount_capital>', str(warranty_amount_capital))
+                    run.text = run.text.replace('<warranty_amount_capital>',
+                                                str(warranty_amount_capital))
     return document
+
 
 # 替换工作表中的变量改写
 def replace_variables_sheet(sheet,
@@ -244,107 +294,155 @@ def replace_variables_sheet(sheet,
             if cell.value is not None:
                 if '<protocol_name>' in str(cell.value):
                     if protocol_name is not None:
-                        cell.value = str(cell.value).replace('<protocol_name>', str(protocol_name))
+                        cell.value = str(cell.value).replace(
+                            '<protocol_name>', str(protocol_name))
                 if '<contract_number>' in str(cell.value):
                     if contract_number is not None:
-                        cell.value = str(cell.value).replace('<contract_number>', str(contract_number))
+                        cell.value = str(cell.value).replace(
+                            '<contract_number>', str(contract_number))
                 if '<contract_sign_date>' in str(cell.value):
                     if contract_sign_date is not None:
-                        cell.value = str(cell.value).replace('<contract_sign_date>', str(contract_sign_date))
+                        cell.value = str(cell.value).replace(
+                            '<contract_sign_date>', str(contract_sign_date))
                 if '<project_name>' in str(cell.value):
                     if project_name is not None:
-                        cell.value = str(cell.value).replace('<project_name>', str(project_name))
+                        cell.value = str(cell.value).replace(
+                            '<project_name>', str(project_name))
                 if '<project_address>' in str(cell.value):
                     if project_address is not None:
-                        cell.value = str(cell.value).replace('<project_address>', str(project_address))
+                        cell.value = str(cell.value).replace(
+                            '<project_address>', str(project_address))
                 if '<party_a_name>' in str(cell.value):
                     if party_a_name is not None:
-                        cell.value = str(cell.value).replace('<party_a_name>', str(party_a_name))
+                        cell.value = str(cell.value).replace(
+                            '<party_a_name>', str(party_a_name))
                 if '<party_b_name>' in str(cell.value):
                     if party_b_name is not None:
-                        cell.value = str(cell.value).replace('<party_b_name>', str(party_b_name))
+                        cell.value = str(cell.value).replace(
+                            '<party_b_name>', str(party_b_name))
                 if '<start_date>' in str(cell.value):
                     if start_date is not None:
-                        cell.value = str(cell.value).replace('<start_date>', str(start_date))
+                        cell.value = str(cell.value).replace(
+                            '<start_date>', str(start_date))
                 if '<completion_date>' in str(cell.value):
                     if completion_date is not None:
-                        cell.value = str(cell.value).replace('<completion_date>', str(completion_date))
+                        cell.value = str(cell.value).replace(
+                            '<completion_date>', str(completion_date))
                 if '<warranty_period>' in str(cell.value):
                     if warranty_period is not None:
-                        cell.value = str(cell.value).replace('<warranty_period>', str(warranty_period))
+                        cell.value = str(cell.value).replace(
+                            '<warranty_period>', str(warranty_period))
                 if '<settlement_sign_date>' in str(cell.value):
                     if settlement_sign_date is not None:
-                        cell.value = str(cell.value).replace('<settlement_sign_date>', str(settlement_sign_date))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_sign_date>',
+                            str(settlement_sign_date))
                 if '<contract_amount>' in str(cell.value):
                     if contract_amount is not None:
-                        cell.value = str(cell.value).replace('<contract_amount>', str(contract_amount))
+                        cell.value = str(cell.value).replace(
+                            '<contract_amount>', str(contract_amount))
                 if '<contract_amount_capital>' in str(cell.value):
                     if contract_amount_capital is not None:
-                        cell.value = str(cell.value).replace('<contract_amount_capital>', str(contract_amount_capital))
+                        cell.value = str(cell.value).replace(
+                            '<contract_amount_capital>',
+                            str(contract_amount_capital))
                 if '<settlement_amount>' in str(cell.value):
                     if settlement_amount is not None:
-                        cell.value = str(cell.value).replace('<settlement_amount>', str(settlement_amount))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_amount>', str(settlement_amount))
                 if '<settlement_amount_capital>' in str(cell.value):
                     if settlement_amount_capital is not None:
-                        cell.value = str(cell.value).replace('<settlement_amount_capital>', str(settlement_amount_capital))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_amount_capital>',
+                            str(settlement_amount_capital))
                 if '<tax_rate>' in str(cell.value):
                     if tax_rate is not None:
-                        cell.value = str(cell.value).replace('<tax_rate>', str(tax_rate))
+                        cell.value = str(cell.value).replace(
+                            '<tax_rate>', str(tax_rate))
                 if '<tax_rate_percent>' in str(cell.value):
                     if tax_rate_percent is not None:
-                        cell.value = str(cell.value).replace('<tax_rate_percent>', str(tax_rate_percent))
+                        cell.value = str(cell.value).replace(
+                            '<tax_rate_percent>', str(tax_rate_percent))
                 if '<settlement_amount_untax>' in str(cell.value):
                     if settlement_amount_untax is not None:
-                        cell.value = str(cell.value).replace('<settlement_amount_untax>', str(settlement_amount_untax))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_amount_untax>',
+                            str(settlement_amount_untax))
                 if '<settlement_amount_tax>' in str(cell.value):
                     if settlement_amount_tax is not None:
-                        cell.value = str(cell.value).replace('<settlement_amount_tax>', str(settlement_amount_tax))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_amount_tax>',
+                            str(settlement_amount_tax))
                 if '<paid_amount>' in str(cell.value):
                     if paid_amount is not None:
-                        cell.value = str(cell.value).replace('<paid_amount>', str(paid_amount))
+                        cell.value = str(cell.value).replace(
+                            '<paid_amount>', str(paid_amount))
                 if '<paid_amount_capital>' in str(cell.value):
                     if paid_amount_capital is not None:
-                        cell.value = str(cell.value).replace('<paid_amount_capital>', str(paid_amount_capital))
+                        cell.value = str(cell.value).replace(
+                            '<paid_amount_capital>', str(paid_amount_capital))
                 if '<balance_amount>' in str(cell.value):
                     if balance_amount is not None:
-                        cell.value = str(cell.value).replace('<balance_amount>', str(balance_amount))
+                        cell.value = str(cell.value).replace(
+                            '<balance_amount>', str(balance_amount))
                 if '<balance_amount_capital>' in str(cell.value):
                     if balance_amount_capital is not None:
-                        cell.value = str(cell.value).replace('<balance_amount_capital>', str(balance_amount_capital))
+                        cell.value = str(cell.value).replace(
+                            '<balance_amount_capital>',
+                            str(balance_amount_capital))
                 if '<settlement_amount_untax_balance>' in str(cell.value):
                     if settlement_amount_untax_balance is not None:
-                        cell.value = str(cell.value).replace('<settlement_amount_untax_balance>', str(settlement_amount_untax_balance))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_amount_untax_balance>',
+                            str(settlement_amount_untax_balance))
                 if '<settlement_amount_tax_balance>' in str(cell.value):
                     if settlement_amount_tax_balance is not None:
-                        cell.value = str(cell.value).replace('<settlement_amount_tax_balance>', str(settlement_amount_tax_balance))
+                        cell.value = str(cell.value).replace(
+                            '<settlement_amount_tax_balance>',
+                            str(settlement_amount_tax_balance))
                 if '<payment_ratio>' in str(cell.value):
                     if payment_ratio is not None:
-                        cell.value = str(cell.value).replace('<payment_ratio>', str(payment_ratio))
+                        cell.value = str(cell.value).replace(
+                            '<payment_ratio>', str(payment_ratio))
                 if '<payment_ratio_percent>' in str(cell.value):
                     if payment_ratio_percent is not None:
-                        cell.value = str(cell.value).replace('<payment_ratio_percent>', str(payment_ratio_percent))
+                        cell.value = str(cell.value).replace(
+                            '<payment_ratio_percent>',
+                            str(payment_ratio_percent))
                 if '<payment_amount>' in str(cell.value):
                     if payment_amount is not None:
-                        cell.value = str(cell.value).replace('<payment_amount>', str(payment_amount))
+                        cell.value = str(cell.value).replace(
+                            '<payment_amount>', str(payment_amount))
                 if '<payment_amount_capital>' in str(cell.value):
                     if payment_amount_capital is not None:
-                        cell.value = str(cell.value).replace('<payment_amount_capital>', str(payment_amount_capital))
+                        cell.value = str(cell.value).replace(
+                            '<payment_amount_capital>',
+                            str(payment_amount_capital))
                 if '<payment_amount_this>' in str(cell.value):
                     if payment_amount_this is not None:
-                        cell.value = str(cell.value).replace('<payment_amount_this>', str(payment_amount_this))
+                        cell.value = str(cell.value).replace(
+                            '<payment_amount_this>', str(payment_amount_this))
                 if '<payment_amount_this_capital>' in str(cell.value):
                     if payment_amount_this_capital is not None:
-                        cell.value = str(cell.value).replace('<payment_amount_this_capital>', str(payment_amount_this_capital))
+                        cell.value = str(cell.value).replace(
+                            '<payment_amount_this_capital>',
+                            str(payment_amount_this_capital))
                 if '<warranty_ratio>' in str(cell.value):
                     if warranty_ratio is not None:
-                        cell.value = str(cell.value).replace('<warranty_ratio>', str(warranty_ratio))
+                        cell.value = str(cell.value).replace(
+                            '<warranty_ratio>', str(warranty_ratio))
                 if '<warranty_ratio_percent>' in str(cell.value):
                     if warranty_ratio_percent is not None:
-                        cell.value = str(cell.value).replace('<warranty_ratio_percent>', str(warranty_ratio_percent))
+                        cell.value = str(cell.value).replace(
+                            '<warranty_ratio_percent>',
+                            str(warranty_ratio_percent))
                 if '<warranty_amount>' in str(cell.value):
                     if warranty_amount is not None:
-                        cell.value = str(cell.value).replace('<warranty_amount>', str(warranty_amount))
+                        cell.value = str(cell.value).replace(
+                            '<warranty_amount>', str(warranty_amount))
                 if '<warranty_amount_capital>' in str(cell.value):
                     if warranty_amount_capital is not None:
-                        cell.value = str(cell.value).replace('<warranty_amount_capital>', str(warranty_amount_capital))
+                        cell.value = str(cell.value).replace(
+                            '<warranty_amount_capital>',
+                            str(warranty_amount_capital))
     return sheet
