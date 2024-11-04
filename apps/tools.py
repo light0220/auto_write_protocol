@@ -3,10 +3,11 @@
 '''
 作    者 : 北极星光 light22@126.com
 创建时间 : 2024-06-02 18:52:17
-最后修改 : 2024-11-01 17:24:24
+最后修改 : 2024-11-04 17:19:44
 修 改 者 : 北极星光
 '''
 from datetime import datetime, timedelta
+import re
 
 # Excel日期格式化
 def excel_date_format(excel_value):
@@ -15,9 +16,26 @@ def excel_date_format(excel_value):
     :param excel_value: Excel日期值
     :return: datetime对象
     """
-    if excel_value:
+    if type(excel_value) == float or type(excel_value) == int:
         date_obj = datetime(1899, 12, 30) + timedelta(days=excel_value)
         return date_obj
+    elif type(excel_value) == str:
+        if excel_value.isdigit():
+            date_obj = datetime(1899, 12, 30) + timedelta(days=float(excel_value))
+            return date_obj
+        elif re.match(r'^\d{4}年\d{1,2}月\d{1,2}日$', excel_value):  # XXXX年X月X日格式
+            date_obj = datetime.strptime(excel_value, '%Y年%m月%d日')
+            return date_obj
+        elif re.match(r'^\d{4}-\d{1,2}-\d{1,2}$', excel_value):  # XXXX-XX-XX格式
+            date_obj = datetime.strptime(excel_value, '%Y-%m-%d')
+            return date_obj
+        elif re.match(r'^\d{4}/\d{1,2}/\d{1,2}$', excel_value):  # XXXX/XX/XX格式
+            date_obj = datetime.strptime(excel_value, '%Y/%m/%d')
+            return date_obj
+        else:
+            return
+    elif type(excel_value) == datetime:
+        return excel_value
     else:
         return
 
@@ -98,6 +116,6 @@ def replace_variables_sheet(sheet, **kwargs):
     return sheet
 
 if __name__ == '__main__':
-    excel_value = 41559.56
+    excel_value = datetime.now()
     date_obj = excel_date_format(excel_value)
     print(date_obj,type(date_obj))
