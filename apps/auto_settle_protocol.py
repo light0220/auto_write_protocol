@@ -3,12 +3,12 @@
 '''
 作    者 : 北极星光 light22@126.com
 创建时间 : 2024-06-02 00:21:43
-最后修改 : 2024-11-01 17:22:01
+最后修改 : 2024-11-04 16:07:57
 修 改 者 : 北极星光
 '''
 
 import os
-import datetime
+from datetime import datetime
 from docx import Document
 from openpyxl import load_workbook
 from tools import *
@@ -23,15 +23,14 @@ def auto_settle_protocol():
     for i in range(2, sheet.max_row + 1):
         protocol_name = sheet[f'A{i}'].value  # 框架协议名称 <protocol_name>
         contract_number = sheet[f'B{i}'].value  # 框架协议编号 <contract_number>
-        contract_sign_date = excel_date_format(sheet[f'C{i}'].value).strftime('%Y年%m月')  # 框架协议签订年月 <contract_sign_date>
+        contract_sign_date = sheet[f'C{i}'].value.strftime('%Y年%m月') if type(sheet[f'C{i}'].value) == datetime else excel_date_format(sheet[f'C{i}'].value).strftime('%Y年%m月')  # 框架协议签订年月 <contract_sign_date>
         project_name = sheet[f'D{i}'].value  # 工程名称 <project_name>
         project_address = sheet[f'E{i}'].value  # 工程地址 <project_address>
         party_a_name = sheet[f'F{i}'].value  # 甲方名称 <party_a_name>
         party_b_name = sheet[f'G{i}'].value  # 乙方名称 <party_b_name>
-        start_date = excel_date_format(sheet[f'H{i}'].value).strftime('%Y年%m月%d日')  # 开工日期
-        completion_date = excel_date_format(sheet[f'I{i}'].value).strftime('%Y年%m月%d日')  # 竣工日期 <completion_date>
+        completion_date = sheet[f'H{i}'].value.strftime('%Y年%m月%d日') if type(sheet[f'H{i}'].value) == datetime else excel_date_format(sheet[f'I{i}'].value).strftime('%Y年%m月%d日')  # 竣工日期 <completion_date>
         warranty_period = sheet[f'J{i}'].value  # 质保期
-        settlement_sign_date = excel_date_format(sheet[f'K{i}'].value).strftime('%Y年%m月')  # 结算协议签订年月 <settlement_sign_date>
+        settlement_sign_date = sheet[f'K{i}'].value.strftime('%Y年%m月') if type(sheet[f'K{i}'].value) == datetime else excel_date_format(sheet[f'K{i}'].value).strftime('%Y年%m月')  # 结算协议签订年月 <settlement_sign_date>
         settlement_amount = round(sheet[f'L{i}'].value, 2)  # 结算金额 <settlement_amount>
         settlement_amount_capital = num_to_capital(settlement_amount)  # 结算金额大写 <settlement_amount_capital>
         tax_rate = sheet[f'M{i}'].value  # 税率

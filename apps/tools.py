@@ -98,4 +98,6 @@ def replace_variables_sheet(sheet, **kwargs):
     return sheet
 
 if __name__ == '__main__':
-    pass
+    excel_value = 41559.56
+    date_obj = excel_date_format(excel_value)
+    print(date_obj,type(date_obj))
