@@ -30,21 +30,24 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
 由于不同公司的资料申报格式不尽相同，本项目提供的示例模板不一定适用所有情景，因此欢迎各位有编程基础的朋友在本框架的基础上二次开发，以生成更适合的资料格式，甚至实现生成施工合同、劳动合同、投标文件等一切格式化的资料内容。开发文档如下：
 
 + 项目结构：
+  ```
   .
-  ├── /apps/  # 主要存放程序代码的目录
-  ├── /apps/tool.py  # 项目中可能调用的通用工具代码
-  ├── /apps/auto_settle_protocol.py  # 生成结算协议及质量保修书的代码
-  ├── /apps/generate_settlement_report.py  # 生成工程结算申报资料的代码
-  ├── /data/  # 存放资料模板的目录
-  ├── /output/  # 存放输出内容的目录
-  ├── /requirements.txt  # 项目依赖的第三方库
-  ├── /config.xlsx  # 工程信息配置文件
-  ├── /main.py  # 程序主入口文件
-  └── README.md  # 项目说明文档
+  ├── apps/				# 主要存放程序代码的目录
+  ├── apps/tool.py			# 项目中可能调用的通用工具代码
+  ├── apps/auto_settle_protocol.py	# 生成结算协议及质量保修书的代码
+  ├── apps/generate_settlement_report.py	# 生成工程结算申报资料的代码
+  ├── data/				# 存放资料模板的目录
+  ├── output/  				# 存放输出内容的目录
+  ├── requirements.txt  			# 项目依赖的第三方库
+  ├── config.xlsx 			# 工程信息配置文件
+  ├── main.py  				# 程序主入口文件
+  └── README.md  				# 项目说明文档
+  ```
 + 开发思路及格式要求：
   + 主要思路为通过读取 `config.xlsx`中的数据，替换模板文档中的对应数据从而达成快速生成文档、表格等资料。
   + 模板文档中需要替换的数据应提前修改成对应标记，为方便阅读以及更好地兼容本框架，统一要求将标记写成 `<变量名>`的格式，具体修改方法可参考示例模板。
   + 新增功能时可在 `/apps/`目录下新建一个.py文件，例如 `new_function.py`，并在 `main.py` 中调用，`new_function.py`中代码参考如下：
+
     ```
     import os
     from docx import Document
@@ -91,6 +94,7 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
     ```
 
     新增功能时，应在 `main.py` 中添加对应功能的调用，例如：
+
     ```
     if choice == "3":  # 此处为新增功能的选项
         new_function()  # 此处为新增功能的调用
