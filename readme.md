@@ -41,14 +41,14 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
   ├── /apps/auto_settle_protocol.py		# 生成结算协议及质量保修书的代码
   ├── /apps/generate_settlement_report.py	# 生成工程结算申报资料的代码
   ├── /data/             						# 存放资料模板的目录
-  ├── /output/							# 存放输入内容的目录
+  ├── /output/							# 存放输出内容的目录
   ├── /requirements.txt					# 项目依赖的第三方库
   ├── /config.xlsx						# 工程信息配置文件
-  ├── /main.py							# 程序入口文件
+  ├── /main.py							# 程序主入口文件
   └── README.md						# 项目说明文档
 + 开发思路及格式要求：
 
-  + 主要思路为通过读取 `config.xlsx`中的数据，替换模板文档中的对应数据从而达成快速生成资料。
+  + 主要思路为通过读取 `config.xlsx`中的数据，替换模板文档中的对应数据从而达成快速生成文档、表格等资料。
   + 模板文档中需要替换的数据应提前修改成对应标记，为方便阅读以及更好地兼容本框架，统一要求将标记写成 `<变量名>`的格式，具体修改方法可参考示例模板。
   + 新增功能时可在 `/apps/`目录下新建一个.py文件，例如 `new_function.py`，并在 `main.py` 中调用，`new_function.py`中代码参考如下：
 
