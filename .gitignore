@@ -1,6 +1,6 @@
 __pycache__/
 data/*
-!data/示例.docx
+!data/*-示例.*
 output/*
 *config.*
 test.*
