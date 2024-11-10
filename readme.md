@@ -4,7 +4,9 @@
 
 用于批量自动生成工程结算申报资料和结算协议、质保协议等文件。
 
-作者：北极星光	E-mail：light22@126.com
+作者：北极星光	
+
+E-mail：light22@126.com
 
 github项目地址：[https://github.com/light0220/auto_write_protocol](https://github.com/light0220/auto_write_protocol)
 
