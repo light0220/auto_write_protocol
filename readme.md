@@ -46,7 +46,7 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
 + 开发思路及格式要求：
   + 主要思路为通过读取 `config.xlsx`中的数据，替换模板文档中的对应数据从而达成快速生成文档、表格等资料。
   + 模板文档中需要替换的数据应提前修改成对应标记，为方便阅读以及更好地兼容本框架，统一要求将标记写成 `<变量名>`的格式，具体修改方法可参考示例模板。
-  + 新增功能时可在 `/apps/`目录下新建一个.py文件，例如 `new_function.py`，并在 `main.py` 中调用，`new_function.py`中代码参考如下：
+  + 新增功能时可在 `apps/`目录下新建一个.py文件，例如 `new_function.py`，并在 `main.py` 中调用，`new_function.py`中代码参考如下：
 
     ```
     import os
@@ -96,6 +96,10 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
     新增功能时，应在 `main.py` 中添加对应功能的调用，例如：
 
     ```
+    from apps.new_function import new_function
+
+    ...
+    
     if choice == "3":  # 此处为新增功能的选项
         new_function()  # 此处为新增功能的调用
     ```
