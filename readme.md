@@ -99,7 +99,7 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
     from apps.new_function import new_function
 
     ...
-    
+
     if choice == "3":  # 此处为新增功能的选项
         new_function()  # 此处为新增功能的调用
     ```
