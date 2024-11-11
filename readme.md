@@ -4,7 +4,7 @@
 
 用于批量自动生成工程结算申报资料和结算协议、质保协议等文件。
 
-作者：北极星光	
+作者：北极星光
 
 E-mail：light22@126.com
 
@@ -14,11 +14,11 @@ gitee项目地址：[https://gitee.com/light22/auto_write_protocol](https://gite
 
 ## 使用方法
 
-+ 安装python3环境: [https://www.python.org/downloads/](https://www.python.org/downloads/)
-+ 安装本项目依赖的第三方库：`pip install -r requirements.txt`
++ 安装python3环境: [https://www.python.org/downloads/](https://www.python.org/downloads/)  以及 Git：[https://git-scm.com/downloads](https://git-scm.com/downloads)
 + 克隆项目到本地：
-  + github：`git clone https://github.com/light0220/auto_write_protocol.git`
-  + gitee：`git clone https://gitee.com/light22/auto_write_protocol.git`
+  + 使用github：`git clone https://github.com/light0220/auto_write_protocol.git`
+  + 或使用gitee：`git clone https://gitee.com/light22/auto_write_protocol.git`
++ 安装本项目依赖的第三方库：`pip install -r requirements.txt`
 + 进入本项目目录，将 `config-示例.xlsx` 文件改名为 `config.xlsx`
 + 进入 `\data\`子目录，将目录下所有文件名的 `-示例`后缀去掉
 + 生成结算协议以及质量保修书
