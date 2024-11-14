@@ -9,6 +9,15 @@
 from datetime import datetime, timedelta
 import re
 
+# 判断字符串是否为数字
+def is_number(s):
+    try:  # 如果能运行float(s)语句，返回True（字符串s是浮点数）
+        float(s)
+        return True
+    except ValueError:
+        pass
+    return False
+
 # Excel日期格式化
 def excel_date_format(excel_value):
     """
@@ -113,6 +122,8 @@ def replace_variables_sheet(sheet, **kwargs):
             for key, value in kwargs.items():
                 if f'<{key}>' in str(cell.value):
                     cell.value = str(cell.value).replace(f'<{key}>', str(value))
+                    if is_number(cell.value):
+                        cell.value = float(cell.value)
     return sheet
 
 if __name__ == '__main__':
